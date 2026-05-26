@@ -1,0 +1,366 @@
+# index.html
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이설 | Performance Marketer Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    body {
+      background: #0f1115;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(15,17,21,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 999;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #d8c3a5;
+    }
+
+    .menu {
+      display: flex;
+      gap: 40px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(216,195,165,0.08);
+      border-radius: 50%;
+      top: -150px;
+      right: -100px;
+      filter: blur(50px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sub-title {
+      color: #d8c3a5;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 78px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      color: #d8c3a5;
+    }
+
+    .hero-desc {
+      width: 700px;
+      max-width: 100%;
+      font-size: 20px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 42px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 18px;
+    }
+
+    .btn {
+      padding: 18px 34px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #d8c3a5;
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(216,195,165,0.18);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+    }
+
+    .section {
+      padding: 130px 0;
+    }
+
+    .section-title {
+      font-size: 54px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -2px;
+    }
+
+    .section-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 18px;
+      margin-bottom: 60px;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 30px;
+    }
+
+    .about-card {
+      background: #171a20;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 40px;
+    }
+
+    .about-card h3 {
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .about-card p {
+      color: rgba(255,255,255,0.68);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .skill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(216,195,165,0.1);
+      color: #d8c3a5;
+      font-size: 14px;
+      border: 1px solid rgba(216,195,165,0.15);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 28px;
+    }
+
+    .project-card {
+      background: #171a20;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-image {
+      height: 240px;
+      background: linear-gradient(135deg, #d8c3a5, #8b6b4a);
+    }
+
+    .project-content {
+      padding: 30px;
+    }
+
+    .project-category {
+      font-size: 13px;
+      color: #d8c3a5;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .project-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .project-desc {
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    footer {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .footer-desc {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 58px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .section-title {
+        font-size: 38px;
+      }
+
+      .hero-desc {
+        font-size: 17px;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">LEE<span>SEOL</span></div>
+
+        <div class="menu">
+          <a href="#about">About</a>
+          <a href="#project">Project</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="sub-title">Performance Marketer · Designer · Creator</div>
+
+        <h1>
+          시선을 설계하고<br>
+          성과를 증명하는<br>
+          <span>퍼포먼스 마케터</span>
+        </h1>
+
+        <p class="hero-desc">
+          Adobe 기반의 디자인 역량과 데이터 기반 마케팅 사고를 결합해
+          브랜드의 감도를 높이고 실제 성과까지 연결합니다.
+          단순한 디자인이 아닌, 사용자의 행동을 움직이는 경험을 만듭니다.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#project" class="btn btn-primary">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+
+      <div class="section-title">About Me</div>
+      <div class="section-sub">
+        디자인 감각과 데이터 분석 능력을 기반으로
+        브랜드의 메시지를 더 효과적으로 전달하는 마케터를 목표로 하고 있습니다.
+      </div>
+
+      <div class="about-grid
+```
